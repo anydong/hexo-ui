@@ -1,18 +1,25 @@
-<% page.posts.each(function(post){ %>
-    <div class="ui card">
-        <div class="content">
-            <a href="<%- post.permalink %>" class="header"><%- post.title %></a>
-            <div class="meta">
-                <span class="date"><%- post.date.toString() %></span>
-            </div>
-            <div class="description">
+<%- partial('_partial/header') %>
+<div class="ui base container">
+    <div class="ui divided items">
+        <% page.posts.each(function(post){ %>
+        <div class="item">
+            <div class="content">
+                <a href="<%- post.permalink %>" class="header"><%- post.title %></a>
+                <div class="meta">
+                    <span class="date"><%- date(post.date) %></span>
+                </div>
+                <div class="description">
                     <%- post.excerpt %>
+                </div>
+                <div class="extra">
+                    <div class="ui mini labels">
+                        <% post.tags.forEach(function(tag){ %>
+                        <a class="ui label" href="<%- tag.permalink %>"><%- tag.name %></a>
+                        <% })  %>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="extra content">
-                <% post.tags.forEach(function(tag){ %>
-                   <a class="ui tag label" href="<%- tag.permalink %>"><%- tag.name %></a> 
-               <% })  %>
-        </div>
+        <% }) %>
     </div>
-<% }) %>
+</div>
