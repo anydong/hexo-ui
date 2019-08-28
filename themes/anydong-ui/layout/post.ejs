@@ -2,8 +2,18 @@
 <div class="ui container">
     <h2 class="ui center aligned header">
         <%- page.title %>
+        <div class="ui sub header">
+            <%- date(page.date) %>
+        </div>
     </h2>
-    <div class="content markdown-body">
+    <div class="ui center aligned sub header">
+        <div class="ui mini labels">
+            <% page.tags.forEach(function(tag){ %>
+            <a class="ui label" href="<%- tag.permalink %>"><%- tag.name %></a>
+            <% })  %>
+        </div>
+    </div>
+    <div class="markdown-body">
         <%- page.content %>
     </div>
 </div>
